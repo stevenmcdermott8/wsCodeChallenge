@@ -22,7 +22,7 @@ public class WsCodeChallengeLogic {
 	 * 
 	 * Example input: "[94133,94133] [94200,94299] [94600,94699]"
 	 * 
-	 * Unexpected behavior may occur if format is followed.
+	 * Unexpected behavior may occur if format is not followed.
 	 * </pre>
 	 * 
 	 * @param zipCodeRanges
