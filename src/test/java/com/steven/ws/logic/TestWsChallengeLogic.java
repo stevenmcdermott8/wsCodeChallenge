@@ -242,4 +242,17 @@ public class TestWsChallengeLogic {
 		expectedList.add(Arrays.asList("94133", "94299"));
 		Assert.assertEquals(expectedList, returnList);
 	}
+
+	@Test
+	public void determineRangeFromUniqueUnorderedListWithValuesInWrongOrder() {
+		// higher value first in third array
+		List<List<String>> returnList = plainJava
+				.retrieveMinimumRangeSetFromArray("[94600,94699] [94133,94000] [94133,94299] [00000,12345]");
+
+		List<List<String>> expectedList = new ArrayList<>();
+		expectedList.add(Arrays.asList("00000", "12345"));
+		expectedList.add(Arrays.asList("94000", "94299"));
+		expectedList.add(Arrays.asList("94600", "94699"));
+		Assert.assertEquals(expectedList, returnList);
+	}
 }

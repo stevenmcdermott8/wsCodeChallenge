@@ -80,12 +80,23 @@ public class WsCodeChallengeLogic {
 	}
 
 	/**
-	 * Sorts an input multidimensional List by the first value in each List within it.
+	 * First sorts each sublist to ensure lower value is first in each sublist, then sorts the input multidimensional
+	 * List by the first value in each List within it.
 	 * 
 	 * @param listToSort
 	 *            the list to Sort
 	 */
 	private void sortListByFirstEntry(List<List<String>> listToSort) {
+
+		listToSort.stream().forEach(list -> {
+			String firstValue = list.get(0);
+			String secondValue = list.get(1);
+			if (Integer.parseInt(firstValue) > Integer.parseInt(secondValue)) {
+				list.set(0, secondValue);
+				list.set(1, firstValue);
+			}
+		});
+
 		listToSort.sort((List<String> o1, List<String> o2) -> o1.get(0).compareTo(o2.get(0)));
 	}
 
