@@ -37,6 +37,9 @@ public class WsCodeChallengeLogic {
 
 		List<List<String>> listToEvaluate = convertStringList(zipCodeRanges);
 
+		// attempt to sanitize the data to help proceed with the rest of the logic
+		attemptToCleanData(listToEvaluate);
+
 		// validate that list contains expected format for logic to succeed
 		validateListFormat(listToEvaluate);
 
@@ -76,6 +79,20 @@ public class WsCodeChallengeLogic {
 		}
 
 		return returnList;
+
+	}
+
+	/**
+	 * Attemps to clean data in each entry of the list. Will replace any character that is not a numeric digit with
+	 * empty space.
+	 * 
+	 * @param listToClean
+	 *            the list to clean
+	 */
+	private void attemptToCleanData(List<List<String>> listToClean) {
+		listToClean.stream().forEach(list -> {
+			list.stream().forEach(item -> list.set(list.indexOf(item), item.replaceAll("[^0-9]+", "")));
+		});
 
 	}
 
